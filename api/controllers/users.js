@@ -1,13 +1,9 @@
 const express = require('express');
 const userService = require('../services/users');
-const authClientRequest = require('../middlewares/auth');
+const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.get(
-  '/:userId',
-  authClientRequest.authClientToken,
-  userService.getUserDetails
-);
+router.get('/:userId', auth.validate, userService.getUserDetails);
 
 module.exports = router;

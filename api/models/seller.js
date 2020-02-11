@@ -23,6 +23,10 @@ const Seller = new Schema(
       type: String,
       required: [true, 'state/province is required']
     },
+    city: {
+      type: String,
+      required: [true, 'city is required']
+    },
     street: {
       type: String,
       required: [true, 'street is required']
@@ -30,21 +34,21 @@ const Seller = new Schema(
     building: {
       type: String
     },
-    profile_url: {
+    profileUrl: {
       type: String
     },
-    phone_primary: {
+    phonePrimary: {
       type: String,
       required: [true, 'primary phone is required']
     },
-    phone_alternate: {
+    phoneAlternate: {
       type: String
     },
-    opening_time: {
+    openingTime: {
       type: String,
       required: [true, 'opening time is required']
     },
-    closing_time: {
+    closingTime: {
       type: String,
       required: [true, 'closing time is required']
     }

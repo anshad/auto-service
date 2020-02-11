@@ -1,34 +1,41 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 
-const authClientToken = async (req, res, next) => {
-  const token = req.headers['x-access-token'];
+const validate = async (req, res, next) => {
+  let token = req.headers['x-access-token'] || req.headers.authorization;
+
+  if (token && token.startsWith('Bearer ')) {
+    // Remove Bearer from string
+    token = token.slice(7, token.length);
+  }
 
   if (!token) {
     return res.status(401).json({
       errors: [
         {
-          msg: ' No token provided'
+          message: 'Auth token not provided'
         }
       ]
     });
   }
 
-  jwt.verify(token, config.secret, (err) => {
+  jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
       return res.status(401).json({
         errors: [
           {
-            msg: 'Invalid Token'
+            message: 'Invalid auth token'
           }
         ]
       });
     }
 
+    req.decoded = decoded;
     return next();
   });
+  return next();
 };
 
 module.exports = {
-  authClientToken
+  validate
 };

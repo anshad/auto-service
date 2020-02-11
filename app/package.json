@@ -14,12 +14,13 @@
     "@react-native-community/cli-platform-android": "^3.0.5-alpha.1",
     "@react-native-community/cli-platform-ios": "^3.0.5-alpha.1",
     "@react-native-community/masked-view": "^0.1.6",
+    "@react-navigation/bottom-tabs": "^5.0.1",
     "@react-navigation/drawer": "^5.0.1",
+    "@react-navigation/material-bottom-tabs": "^5.0.1",
     "@react-navigation/native": "^5.0.1",
     "@react-navigation/native-stack": "^5.0.1",
     "@react-navigation/stack": "^5.0.1",
-    "@react-navigation/material-bottom-tabs": "^5.0.1",
-    "@react-navigation/bottom-tabs": "^5.0.1",
+    "axios": "^0.19.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-elements": "^1.2.7",
@@ -39,6 +40,7 @@
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "react-native-dotenv": "^0.2.0",
     "react-test-renderer": "16.9.0"
   },
   "jest": {

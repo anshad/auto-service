@@ -1,7 +1,7 @@
 {
-  "name": "example",
+  "name": "Auto Service REST API",
   "version": "0.1.0",
-  "description": "apiDoc basic example",
-  "title": "Custom apiDoc browser title",
-  "url": "https://api.github.com/v1"
+  "description": "REST API for auto service",
+  "title": "Auto Service API v1",
+  "url": "http://localhost:3000/api/v1"
 }

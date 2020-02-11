@@ -63,17 +63,36 @@ const registerSeller = async (req, res) => {
       ]
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       errors: [
         {
-          msg: 'there was a problem registering a seller.'
+          message: 'There was a problem registering a seller.'
         }
       ]
     });
   }
 };
 
+const getSellers = async (req, res) => {
+  const sellers = await sellerModel.find();
+
+  if (!sellers) {
+    return res.status(404).json({
+      success: false,
+      errors: [
+        {
+          message: 'No sellers found'
+        }
+      ]
+    });
+  }
+
+  return res.status(200).json({
+    data: sellers
+  });
+};
+
 module.exports = {
-  registerSeller
+  registerSeller,
+  getSellers
 };

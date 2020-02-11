@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const User = new Schema(
+let User = new Schema(
   {
     name: {
       type: String,
@@ -25,4 +25,10 @@ const User = new Schema(
   }
 );
 
+// User.set('toJSON', {
+//   transform: function(doc, ret, opt) {
+//     delete ret['password'];
+//     return ret;
+//   }
+// });
 module.exports = mongoose.model('User', User);

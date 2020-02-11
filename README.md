@@ -15,6 +15,8 @@ An application solution for multitenant automobile service providers.
 - Better directory structure
 - Code refactoring for better reusability and maintainability
 - Unit testing and code coverage
+- Location based seller listing on app (sort nearby)
+- CI/CD for auto build and deployment
 
 ## References
 

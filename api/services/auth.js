@@ -20,7 +20,7 @@ const register = async (req, res) => {
     return res.status(409).json({
       errors: [
         {
-          msg: 'email already exists'
+          message: 'email already exists'
         }
       ]
     });
@@ -39,19 +39,18 @@ const register = async (req, res) => {
       throw new Error();
     }
 
-    return res.status(201).json({
+    return res.status(200).json({
       success: [
         {
-          msg: 'user registered successfully'
+          message: 'User registered successfully'
         }
       ]
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       errors: [
         {
-          msg: 'there was a problem registering a user.'
+          message: 'There was a problem registering a user.'
         }
       ]
     });
@@ -79,7 +78,7 @@ const login = async (req, res) => {
       return res.status(401).json({
         errors: [
           {
-            msg: 'email/password is wrong'
+            message: 'email/password is wrong'
           }
         ]
       });
@@ -90,20 +89,19 @@ const login = async (req, res) => {
     });
 
     return res.status(200).json({
-      success: [
-        {
-          msg: 'user login successfully',
-          email,
-          token
-        }
-      ]
+      data: {
+        token,
+        _id: isUserExists._id,
+        name: isUserExists.name,
+        email: isUserExists.email
+      }
     });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
       errors: [
         {
-          msg: 'there was a problem login a user.'
+          message: 'There was a problem login a user.'
         }
       ]
     });
