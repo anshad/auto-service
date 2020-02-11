@@ -3,5 +3,5 @@
   "version": "0.1.0",
   "description": "REST API for auto service",
   "title": "Auto Service API v1",
-  "url": "http://localhost:3000/api/v1"
+  "url": "http://51.161.8.184:3000/api/v1/"
 }

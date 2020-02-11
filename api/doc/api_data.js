@@ -61,7 +61,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": " HTTP/1.1 200 OK\n {\n   data: {\n     token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNDIzZjY1MTY0NDM2YjgzYzk4NjJmYSIsImlhdCI6MTU4MTQyMDQ4NywiZXhwIjoxNTgxNTA2ODg3fQ.VZBFY5EhALN1kEjOyJ4VZIw8Xw9cIn-Ec50O44q-khA\",\n     _id: \"5e423f65164436b83c9862fa\",\n     name: \"anshad vp\",\n     email: \"anshad.musafir@gmail.com\"\n  }\n}",
+          "content": " HTTP/1.1 200 OK\n {\n   data: {\n     token: \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\",\n     _id: \"5e423f65164436b83c9862fa\",\n     name: \"anshad vp\",\n     email: \"anshad.musafir@gmail.com\"\n  }\n}",
           "type": "json"
         }
       ]
