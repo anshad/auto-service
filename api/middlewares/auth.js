@@ -33,7 +33,7 @@ const validate = async (req, res, next) => {
     req.decoded = decoded;
     return next();
   });
-  return next();
+  // return next();
 };
 
 module.exports = {

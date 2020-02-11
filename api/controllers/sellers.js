@@ -49,7 +49,7 @@ const router = express.Router();
  */
 router.post(
   '/register',
-  [auth.validate, validation.validateSellerRegistrationBody()],
+  [validation.validateSellerRegistrationBody()],
   sellerService.registerSeller
 );
 

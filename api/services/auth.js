@@ -50,7 +50,8 @@ const register = async (req, res) => {
     return res.status(500).json({
       errors: [
         {
-          message: 'There was a problem registering a user.'
+          message: 'There was a problem registering a user.',
+          log: error
         }
       ]
     });
@@ -97,11 +98,11 @@ const login = async (req, res) => {
       }
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       errors: [
         {
-          message: 'There was a problem login a user.'
+          message: 'There was a problem login a user.',
+          log: error
         }
       ]
     });

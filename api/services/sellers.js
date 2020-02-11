@@ -16,6 +16,7 @@ const registerSeller = async (req, res) => {
     email,
     country,
     province,
+    city,
     street,
     building,
     phonePrimary,
@@ -43,6 +44,7 @@ const registerSeller = async (req, res) => {
       email,
       country,
       province,
+      city,
       street,
       building,
       phonePrimary,
@@ -66,7 +68,8 @@ const registerSeller = async (req, res) => {
     return res.status(500).json({
       errors: [
         {
-          message: 'There was a problem registering a seller.'
+          message: 'There was a problem registering a seller.',
+          log: error
         }
       ]
     });

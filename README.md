@@ -18,6 +18,14 @@ An application solution for multitenant automobile service providers.
 - Location based seller listing on app (sort nearby)
 - CI/CD for auto build and deployment
 
+## REST API documentation
+
+https://anshad.github.io/auto-service/
+
+## Re-publish API documentation
+
+    git subtree push --prefix api/doc origin gh-pages
+
 ## References
 
 - [NodeJS](https://nodejs.org/en/docs/)

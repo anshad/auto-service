@@ -35,16 +35,19 @@ const validateSellerRegistrationBody = () => [
   body('province')
     .exists()
     .withMessage('province field is required'),
+  body('city')
+    .exists()
+    .withMessage('city field is required'),
   body('street')
     .exists()
     .withMessage('street field is required'),
-  body('phone_primary')
+  body('phonePrimary')
     .exists()
     .withMessage('primary phone field is required'),
-  body('opening_time')
+  body('openingTime')
     .exists()
     .withMessage('opening time phone field is required'),
-  body('closing_time')
+  body('closingTime')
     .exists()
     .withMessage('closing time phone field is required')
 ];

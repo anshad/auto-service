@@ -1,7 +1,7 @@
 const localConfig = {
-  hostname: 'localhost',
-  port: 3000,
-  secret: 'restapisecret'
+  hostname: process.env.HOST,
+  port: process.env.PORT,
+  secret: process.env.JWT_SECRET
 };
 
 module.exports = localConfig;
