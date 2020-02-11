@@ -58,7 +58,7 @@ router.post(
  *    HTTP/1.1 200 OK
  *    {
  *      data: {
- *        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNDIzZjY1MTY0NDM2YjgzYzk4NjJmYSIsImlhdCI6MTU4MTQyMDQ4NywiZXhwIjoxNTgxNTA2ODg3fQ.VZBFY5EhALN1kEjOyJ4VZIw8Xw9cIn-Ec50O44q-khA",
+ *        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
  *        _id: "5e423f65164436b83c9862fa",
  *        name: "anshad vp",
  *        email: "anshad.musafir@gmail.com"

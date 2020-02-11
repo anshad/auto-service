@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { SectionGrid, FlatGrid } from 'react-native-super-grid';
 import { Searchbar } from 'react-native-paper';
 import { API_URI } from 'react-native-dotenv';
+
+import serviceImg from '../images/service.png';
 
 export default class DetailScreen extends Component {
   constructor(props) {
@@ -28,28 +30,9 @@ export default class DetailScreen extends Component {
       });
   }
 
-  items = [
-    { name: 'TURQUOISE', code: '#1abc9c' },
-    { name: 'EMERALD', code: '#2ecc71' },
-    { name: 'PETER RIVER', code: '#3498db' },
-    { name: 'AMETHYST', code: '#9b59b6' },
-    { name: 'WET ASPHALT', code: '#34495e' },
-    { name: 'GREEN SEA', code: '#16a085' },
-    { name: 'NEPHRITIS', code: '#27ae60' },
-    { name: 'BELIZE HOLE', code: '#2980b9' },
-    { name: 'WISTERIA', code: '#8e44ad' },
-    { name: 'MIDNIGHT BLUE', code: '#2c3e50' },
-    { name: 'SUN FLOWER', code: '#f1c40f' },
-    { name: 'CARROT', code: '#e67e22' },
-    { name: 'ALIZARIN', code: '#e74c3c' },
-    { name: 'CLOUDS', code: '#ecf0f1' },
-    { name: 'CONCRETE', code: '#95a5a6' },
-    { name: 'ORANGE', code: '#f39c12' },
-    { name: 'PUMPKIN', code: '#d35400' },
-    { name: 'POMEGRANATE', code: '#c0392b' },
-    { name: 'SILVER', code: '#bdc3c7' },
-    { name: 'ASBESTOS', code: '#7f8c8d' }
-  ];
+  selectSeller(seller) {
+    console.log(seller);
+  }
 
   render() {
     return (
@@ -61,16 +44,57 @@ export default class DetailScreen extends Component {
           style={this.styles.search}
         />
         <FlatGrid
-          itemDimension={190}
+          itemDimension={250}
           items={this.state.sellers}
           renderItem={({ item, index }) => (
             <TouchableOpacity
-              style={[this.styles.itemContainer, { backgroundColor: 'orange' }]}
+              style={this.styles.itemContainer}
               onPress={() => {
-                console.log('pressed');
+                this.selectSeller(item);
               }}>
-              <Text style={this.styles.itemName}>{item.name}</Text>
-              <Text style={this.styles.itemCode}>{item.email}</Text>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'stretch'
+                }}>
+                <Image
+                  source={serviceImg}
+                  style={this.styles.image}
+                  resizeMode="contain"
+                />
+                <View style={this.styles.itemDetails}>
+                  <Text style={this.styles.itemName}>{item.name}</Text>
+                  {item.building ? (
+                    <Text style={this.styles.itemCode}>{item.building}</Text>
+                  ) : (
+                    <Text style={this.styles.hidden}></Text>
+                  )}
+                  {item.street ? (
+                    <Text style={this.styles.itemCode}>{item.street}</Text>
+                  ) : (
+                    <Text style={this.styles.hidden}></Text>
+                  )}
+                  {item.city ? (
+                    <Text style={this.styles.itemCode}>{item.city}</Text>
+                  ) : (
+                    <Text style={this.styles.hidden}></Text>
+                  )}
+                  <Text style={this.styles.itemCode}>{item.province}</Text>
+                  <Text style={this.styles.itemCode}>{item.country}</Text>
+                  <Text style={this.styles.itemCode}>Email: {item.email}</Text>
+                  {item.phonePrimary ? (
+                    <Text style={this.styles.itemCode}>
+                      Phone: {item.phonePrimary}
+                    </Text>
+                  ) : (
+                    <Text style={this.styles.hidden}></Text>
+                  )}
+                  <Text style={this.styles.itemCode}>
+                    Open Hours: {item.openingTime} - {item.closingTime}
+                  </Text>
+                </View>
+              </View>
             </TouchableOpacity>
           )}
         />
@@ -79,6 +103,16 @@ export default class DetailScreen extends Component {
   }
 
   styles = StyleSheet.create({
+    hidden: { display: 'none' },
+    itemDetails: {
+      flex: 1.5,
+      alignSelf: 'center'
+    },
+    image: {
+      flex: 1,
+      alignItems: 'flex-start',
+      alignSelf: 'center'
+    },
     search: {
       margin: 10
     },
@@ -87,19 +121,21 @@ export default class DetailScreen extends Component {
       flex: 1
     },
     itemContainer: {
+      backgroundColor: '#4B8BF5',
       justifyContent: 'flex-end',
       borderRadius: 5,
       padding: 10,
-      height: 150
+      height: 250
     },
     itemName: {
-      fontSize: 16,
+      textTransform: 'capitalize',
+      fontSize: 20,
       color: '#fff',
-      fontWeight: '600'
+      fontWeight: 'bold'
     },
     itemCode: {
       fontWeight: '600',
-      fontSize: 12,
+      fontSize: 13,
       color: '#fff'
     }
   });

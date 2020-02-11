@@ -4,6 +4,10 @@ Automobile service appoitment booking app using react native
 
 ## Run on virtual device
 
+Install react native CLI,
+
+    sudo npm install react-native -g
+
 Install dependencies,
 
     yarn
@@ -14,11 +18,11 @@ or
 
 Then run android or ios simulator on your machine and run,
 
-    npx react-native run-android
+    react-native run-android
 
 or
 
-    npx react-native run-ios
+    react-native run-ios
 
 ## Generate APK for release
 

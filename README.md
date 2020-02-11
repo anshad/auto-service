@@ -8,6 +8,8 @@ An application solution for multitenant automobile service providers.
 - Lint fixes using eslint
 - API documentation using apidocjs
 - Secure REST API with JWT authentication
+- Deployed documentation in GiHub pages
+- Deployed API on virtual private server
 
 ## What can be improved or added
 
@@ -48,3 +50,5 @@ https://anshad.github.io/auto-service/
 - [Body Parser](https://www.npmjs.com/package/body-parser)
 - [Lodash](https://lodash.com/)
 - [Nodemon](https://www.npmjs.com/package/nodemon)
+- [dotenv](https://github.com/motdotla/dotenv)
+- [PM2](https://www.npmjs.com/package/pm2)

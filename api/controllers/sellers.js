@@ -1,7 +1,7 @@
 const express = require('express');
 const sellerService = require('../services/sellers');
 const validation = require('../middlewares/validation');
-const auth = require('../middlewares/auth');
+// const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
