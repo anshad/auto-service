@@ -1,8 +1,8 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/auth/login",
-    "title": "Login user",
+    "url": "auth/login",
+    "title": "Login User",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -91,8 +91,8 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/auth/register",
-    "title": "Register a user",
+    "url": "auth/register",
+    "title": "Register User",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -167,8 +167,8 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/sellers/",
-    "title": "Get list of service providers",
+    "url": "sellers",
+    "title": "Get Sellers",
     "header": {
       "fields": {
         "Header": [
@@ -217,8 +217,8 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/sellers/register",
-    "title": "Register a service provider",
+    "url": "sellers/register",
+    "title": "Register Seller",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -235,6 +235,20 @@ define({ "api": [
             "optional": false,
             "field": "email",
             "description": "<p>Mandatory email.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Mandatory password.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "confirmPassword",
+            "description": "<p>Mandatory confirmPassword.</p>"
           },
           {
             "group": "Parameter",
@@ -346,5 +360,94 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "controllers/sellers.js",
     "groupTitle": "Sellers"
+  },
+  {
+    "type": "post",
+    "url": "slots/default-slots",
+    "title": "Add Slots",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "time",
+            "description": "<p>Mandatory slot time.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "sellerId",
+            "description": "<p>Mandatory id for the seller.</p>"
+          }
+        ]
+      }
+    },
+    "name": "Add_Default_Slots",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's token.</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Content type as application/json.</p>"
+          }
+        ]
+      }
+    },
+    "group": "Slots",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "success",
+            "description": "<p>message</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  success: [\n     {\n       message: 'Default slot added successfully'\n     }\n   ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "server",
+            "description": "<p>There was a problem adding slot.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Internal Server Error\n{\n  errors: [\n    {\n      message: 'There was a problem adding slot.'\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controllers/slots.js",
+    "groupTitle": "Slots"
   }
 ] });

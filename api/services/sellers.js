@@ -1,7 +1,8 @@
 const { validationResult } = require('express-validator');
-
-// const userModel = require('../models/user');
+const bcrypt = require('bcryptjs');
+const userModel = require('../models/user');
 const sellerModel = require('../models/seller');
+require('../models/slots');
 
 const registerSeller = async (req, res) => {
   const errors = validationResult(req);
@@ -22,21 +23,25 @@ const registerSeller = async (req, res) => {
     phonePrimary,
     phoneAlternate,
     openingTime,
-    closingTime
+    closingTime,
+    password
   } = req.body;
 
   const isEmailExists = await sellerModel.findOne({ email });
+  const isUserEmailExists = await userModel.findOne({ email });
 
-  if (isEmailExists) {
+  if (isEmailExists || isUserEmailExists) {
     // conflict
     return res.status(409).json({
       errors: [
         {
-          msg: 'email already exists'
+          message: 'email already exists'
         }
       ]
     });
   }
+
+  const hashedPassword = await bcrypt.hash(password, 8);
 
   try {
     const seller = await sellerModel.create({
@@ -57,13 +62,34 @@ const registerSeller = async (req, res) => {
       throw new Error();
     }
 
-    return res.status(200).json({
-      success: [
-        {
-          message: 'Seller registered successfully'
-        }
-      ]
-    });
+    try {
+      const user = await userModel.create({
+        name,
+        email,
+        password: hashedPassword
+      });
+
+      if (!user) {
+        throw new Error();
+      }
+
+      return res.status(200).json({
+        success: [
+          {
+            message: 'Seller registered successfully'
+          }
+        ]
+      });
+    } catch (error) {
+      return res.status(500).json({
+        errors: [
+          {
+            message: 'There was a problem registering a user.',
+            log: error
+          }
+        ]
+      });
+    }
   } catch (error) {
     return res.status(500).json({
       errors: [
@@ -77,7 +103,7 @@ const registerSeller = async (req, res) => {
 };
 
 const getSellers = async (req, res) => {
-  const sellers = await sellerModel.find();
+  const sellers = await sellerModel.find().populate('defaultSlots');
 
   if (!sellers) {
     return res.status(404).json({

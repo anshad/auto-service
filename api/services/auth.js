@@ -4,6 +4,8 @@ const { validationResult } = require('express-validator');
 
 const config = require('../config/env');
 const userModel = require('../models/user');
+const sellerModel = require('../models/seller');
+require('../models/slots');
 
 const register = async (req, res) => {
   const errors = validationResult(req);
@@ -89,14 +91,27 @@ const login = async (req, res) => {
       expiresIn: 86400
     });
 
-    return res.status(200).json({
+    let result = {
+      success: [
+        {
+          message: 'Successfully logged-in'
+        }
+      ],
       data: {
         token,
         _id: isUserExists._id,
         name: isUserExists.name,
         email: isUserExists.email
       }
-    });
+    };
+
+    const isSellerExists = await sellerModel
+      .findOne({ email })
+      .populate('defaultSlots');
+    if (isSellerExists) {
+      result.data.seller = isSellerExists;
+    }
+    return res.status(200).json(result);
   } catch (error) {
     return res.status(500).json({
       errors: [

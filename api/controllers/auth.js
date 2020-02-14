@@ -5,7 +5,7 @@ const validation = require('../middlewares/validation');
 const router = express.Router();
 
 /**
- * @api {post} /auth/register Register a user
+ * @api {post} auth/register Register User
  * @apiParam {String} name Mandatory full name greater than 3 letters.
  * @apiParam {String} email Mandatory email.
  * @apiParam {String} password Mandatory password 8 to 12 characters long.
@@ -43,7 +43,7 @@ router.post(
 );
 
 /**
- * @api {post} /auth/login Login user
+ * @api {post} auth/login Login User
  * @apiParam {String} email Mandatory email.
  * @apiParam {String} password Mandatory password 8 to 12 characters long.
  * @apiName Login User

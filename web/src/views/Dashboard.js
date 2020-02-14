@@ -5,8 +5,10 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      appointments: []
+      seller: JSON.parse(sessionStorage.getItem('seller'))
     };
+
+    console.log(this.state.seller);
   }
 
   render() {

@@ -13,12 +13,19 @@ An application solution for multitenant automobile service providers.
 
 ## What can be improved or added
 
-- Improved App, Web UI
+- Improve App, Web UI
 - Better directory structure
 - Code refactoring for better reusability and maintainability
 - Unit testing and code coverage
 - Location based seller listing on app (sort nearby)
 - CI/CD for auto build and deployment
+- Forgot password, reset password
+- OTP authentication
+- Payment gateway and billing/invoicing system
+- Better form controls (only digits on phone number, validations, dynamic dropdowns, etc.)
+- Improve state management and network calls
+- Validation on web app password confirmaion
+- Improve logic for securing protected web routes
 
 ## REST API documentation
 
@@ -52,3 +59,5 @@ https://anshad.github.io/auto-service/
 - [Nodemon](https://www.npmjs.com/package/nodemon)
 - [dotenv](https://github.com/motdotla/dotenv)
 - [PM2](https://www.npmjs.com/package/pm2)
+- [React Router](https://reacttraining.com/react-router/)
+- [ReactStrap](https://reactstrap.github.io/)

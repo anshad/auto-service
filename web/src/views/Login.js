@@ -54,9 +54,16 @@ class Login extends Component {
         return Promise.reject(error);
       })
       .then(result => {
-        sessionStorage.setItem('token', result.data.token);
-        this.setState({ success: result.success[0].message });
-        this.props.history.push('/');
+        if (result.data.seller) {
+          sessionStorage.setItem('token', result.data.token);
+          sessionStorage.setItem('seller', JSON.stringify(result.data.seller));
+          this.setState({ success: result.success[0].message });
+          this.props.history.push('/');
+        } else {
+          this.setState({
+            errors: [{ message: "You don't have a seller account!" }]
+          });
+        }
       })
       .catch(err => {
         this.setState({ success: '' });

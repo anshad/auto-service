@@ -1,14 +1,16 @@
 const express = require('express');
 const sellerService = require('../services/sellers');
 const validation = require('../middlewares/validation');
-// const auth = require('../middlewares/auth');
+const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
 /**
- * @api {post} /sellers/register Register a service provider
+ * @api {post} sellers/register Register Seller
  * @apiParam {String} name Mandatory name greater than 3 letters.
  * @apiParam {String} email Mandatory email.
+ * @apiParam {String} password Mandatory password.
+ * @apiParam {String} confirmPassword Mandatory confirmPassword.
  * @apiParam {String} country Mandatory country.
  * @apiParam {String} province Mandatory province.
  * @apiParam {String} city Mandatory city.
@@ -54,7 +56,7 @@ router.post(
 );
 
 /**
- * @api {get} /sellers/ Get list of service providers
+ * @api {get} sellers Get Sellers
  * @apiHeader {String} Authorization User's token.
  * @apiHeader {String} Content-Type Content type as application/json.
  * @apiGroup Sellers
@@ -97,6 +99,6 @@ router.post(
  *      }
  *
  */
-router.get('/', [], sellerService.getSellers);
+router.get('/', [auth.validate], sellerService.getSellers);
 
 module.exports = router;

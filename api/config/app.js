@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const routes = require('../routes');
 
 module.exports = () => {
@@ -12,6 +12,7 @@ module.exports = () => {
     server.set('port', config.port);
     server.set('hostname', config.hostname);
 
+    server.use(cors());
     // middleware to parse the json
     server.use(bodyParser.json());
     server.use(
