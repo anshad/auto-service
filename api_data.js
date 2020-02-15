@@ -449,5 +449,125 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "controllers/slots.js",
     "groupTitle": "Slots"
+  },
+  {
+    "type": "get",
+    "url": "slots/default-slots/:sellerId",
+    "title": "Get Slots",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "sellerId",
+            "description": "<p>Mandatory seller id.</p>"
+          }
+        ]
+      }
+    },
+    "name": "Get_Seller's_Default_Slots",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's token.</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Content type as application/json.</p>"
+          }
+        ]
+      }
+    },
+    "group": "Slots",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "data",
+            "description": "<p>seller list</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  data: [\n     {\n      \"_id\":\"5e47ec9ff461887a08efa626\",\n      \"time\":\"6:00 pm\",\n      \"seller\":\"5e46c304b921534916a656ee\",\n      \"createdAt\":\"2020-02-15T13:05:35.699Z\",\n      \"updatedAt\":\"2020-02-15T13:05:35.699Z\",\n      \"__v\":0\n    },{\n      \"_id\":\"5e47ed47f461887a08efa627\",\n      \"time\":\"9:00 am\",\n      \"seller\":\"5e46c304b921534916a656ee\",\n      \"createdAt\":\"2020-02-15T13:08:23.634Z\",\n      \"updatedAt\":\"2020-02-15T13:08:23.634Z\",\n      \"__v\":0\n    }\n   ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "controllers/slots.js",
+    "groupTitle": "Slots"
+  },
+  {
+    "type": "post",
+    "url": "slots/open-slots",
+    "title": "Open Slots",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "slot",
+            "description": "<p>Mandatory default slot id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": "<p>Mandatory date in 'mm-dd-yyyy' format.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "seller",
+            "description": "<p>Mandatory seller id.</p>"
+          }
+        ]
+      }
+    },
+    "name": "Open_Date_for_Slots",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's token.</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Content type as application/json.</p>"
+          }
+        ]
+      }
+    },
+    "group": "Slots",
+    "version": "0.0.0",
+    "filename": "controllers/slots.js",
+    "groupTitle": "Slots"
   }
 ] });
