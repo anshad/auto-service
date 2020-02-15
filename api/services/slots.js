@@ -10,27 +10,46 @@ const addDefaultSlots = async (req, res) => {
   }
   const { time, sellerId } = req.body;
 
-  try {
-    const seller = await sellerModel
-      .findById(sellerId)
-      .populate('defaultSlots');
-    if (seller) {
-      const defaultSlot = await slotModel.create({
-        time
-      });
-      if (!defaultSlot) {
-        throw new Error();
-      }
-      seller.defaultSlots.push(defaultSlot._id);
-      seller.save();
+  const isSlotExists = await slotModel.findOne({ time, seller: sellerId });
 
-      return res.status(200).json({
-        success: [
-          {
-            message: 'Default slot added successfully'
-          }
-        ]
-      });
+  if (isSlotExists) {
+    return res.status(409).json({
+      errors: [
+        {
+          message: 'Slot already exists'
+        }
+      ]
+    });
+  }
+
+  try {
+    let seller = await sellerModel.findById(sellerId);
+    if (seller) {
+      slotModel
+        .create({
+          time,
+          seller: sellerId
+        })
+        .then(data => {
+          slotModel
+            .find({ seller: sellerId })
+            .then(slots => {
+              return res.status(200).json({
+                success: [
+                  {
+                    message: 'Default slot added successfully'
+                  }
+                ],
+                data: slots
+              });
+            })
+            .catch(err => {
+              throw new Error();
+            });
+        })
+        .catch(error => {
+          throw new Error();
+        });
     } else {
       return res.status(500).json({
         errors: [
@@ -53,7 +72,7 @@ const addDefaultSlots = async (req, res) => {
 };
 
 const getDefaultSlots = async (req, res) => {
-  const slots = await slotModel.find();
+  const slots = await slotModel.find({ seller: req.params.sellerId });
 
   if (!slots) {
     return res.status(404).json({

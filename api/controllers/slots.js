@@ -44,4 +44,10 @@ router.post(
   slotService.addDefaultSlots
 );
 
+router.get(
+  '/default-slots/:sellerId',
+  [auth.validate, validation.validateDefaultSlotBody()],
+  slotService.getDefaultSlots
+);
+
 module.exports = router;

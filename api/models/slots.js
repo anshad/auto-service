@@ -7,7 +7,8 @@ const DefaultSlots = new Schema(
     time: {
       type: String,
       required: [true, 'slot time is required']
-    }
+    },
+    seller: { type: Schema.Types.ObjectId, ref: 'Seller' }
   },
   {
     timestamps: true

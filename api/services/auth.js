@@ -105,9 +105,7 @@ const login = async (req, res) => {
       }
     };
 
-    const isSellerExists = await sellerModel
-      .findOne({ email })
-      .populate('defaultSlots');
+    const isSellerExists = await sellerModel.findOne({ email });
     if (isSellerExists) {
       result.data.seller = isSellerExists;
     }

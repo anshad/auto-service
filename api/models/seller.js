@@ -51,8 +51,7 @@ const Seller = new Schema(
     closingTime: {
       type: String,
       required: [true, 'closing time is required']
-    },
-    defaultSlots: [{ type: Schema.Types.ObjectId, ref: 'DefaultSlots' }]
+    }
   },
   {
     timestamps: true

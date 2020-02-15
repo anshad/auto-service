@@ -26,6 +26,8 @@ An application solution for multitenant automobile service providers.
 - Improve state management and network calls
 - Validation on web app password confirmaion
 - Improve logic for securing protected web routes
+- Pagination
+- Edit/delete items from list
 
 ## REST API documentation
 

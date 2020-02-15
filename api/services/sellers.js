@@ -103,7 +103,7 @@ const registerSeller = async (req, res) => {
 };
 
 const getSellers = async (req, res) => {
-  const sellers = await sellerModel.find().populate('defaultSlots');
+  const sellers = await sellerModel.find();
 
   if (!sellers) {
     return res.status(404).json({
