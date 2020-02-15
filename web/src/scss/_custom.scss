@@ -8,3 +8,16 @@
 .action {
   cursor: pointer;
 }
+.custom-badge {
+  margin-right: 5px;
+  height: 20px;
+  line-height: 15px;
+  a {
+    i {
+      color: orangered;
+    }
+  }
+}
+.left-margin {
+  margin-left: 5px;
+}

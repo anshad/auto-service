@@ -13,21 +13,28 @@ An application solution for multitenant automobile service providers.
 
 ## What can be improved or added
 
-- Improve App, Web UI
+- Improve user interface - Web, App
 - Better directory structure
 - Code refactoring for better reusability and maintainability
 - Unit testing and code coverage
-- Location based seller listing on app (sort nearby)
+- Location based seller listing on app (sort nearby) - App
 - CI/CD for auto build and deployment
-- Forgot password, reset password
-- OTP authentication
-- Payment gateway and billing/invoicing system
-- Better form controls (only digits on phone number, validations, dynamic dropdowns, etc.)
-- Improve state management and network calls
-- Validation on web app password confirmaion
-- Improve logic for securing protected web routes
-- Pagination
-- Edit/delete items from list
+- Forgot password, reset password - Web, App
+- OTP authentication - App
+- Email confirmation - Web, App
+- Payment gateway and billing/invoicing system - Web, App
+- Better form controls (only digits on phone number, validations, dynamic dropdowns, etc.) - Web, App
+- Improve state management and network calls - Web, App
+- Validation on password confirmaion - Web
+- Improve logic for securing protected web routes - Web
+- Pagination - Web
+- Edit/delete items from list - Web
+- Comments on code for maintainability - Web, App, API
+- Redux/MobX - Web, App
+- Improve user experience - Web, App
+- Progress spinner - Web, App
+- Close an opened slot date - Web
+- Close expired slot date - Web
 
 ## REST API documentation
 

@@ -15,24 +15,40 @@ import {
   Label,
   Input,
   Alert,
-  Table
+  Table,
+  Badge
 } from 'reactstrap';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { addDays, format } from 'date-fns';
 
 class Slots extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
+      openSlotModal: false,
       seller: JSON.parse(sessionStorage.getItem('seller')),
       token: sessionStorage.getItem('token'),
       slotTime: null,
       errors: [],
       success: '',
+      openSlotDate: new Date(),
+      openSlotTime: null,
+      openSlotId: null,
       defaultSlots: []
     };
     this.toggle = this.toggle.bind(this);
     this.saveDefaultSlot = this.saveDefaultSlot.bind(this);
-    this.deleteSlot = this.deleteSlot.bind(this);
+    this.addSlot = this.addSlot.bind(this);
+    this.toggleOpenSlotModal = this.toggleOpenSlotModal.bind(this);
+    this.openSlot = this.openSlot.bind(this);
+    this.closeSlot = this.closeSlot.bind(this);
+  }
+
+  closeSlot(e, slot) {
+    e.preventDefault();
+    console.log(slot);
   }
 
   toggle() {
@@ -80,7 +96,10 @@ class Slots extends Component {
       });
   }
 
-  deleteSlot(item) {}
+  addSlot(item) {
+    this.setState({ openSlotTime: item.time, openSlotId: item._id });
+    this.toggleOpenSlotModal();
+  }
 
   renderSlotList() {
     let slots = '';
@@ -90,6 +109,40 @@ class Slots extends Component {
           <tr key={i}>
             <td>{i + 1}</td>
             <td>{item.time}</td>
+            <td>
+              {item.openSlots.length > 0
+                ? item.openSlots.map((openSlot, slotIndex) => {
+                    return (
+                      <Badge
+                        color="info"
+                        key={slotIndex}
+                        className="custom-badge">
+                        {openSlot.date}
+                        <a
+                          href="#"
+                          onClick={e => {
+                            this.closeSlot(e, openSlot);
+                          }}>
+                          <i className="fa fa-close left-margin"></i>
+                        </a>
+                      </Badge>
+                    );
+                  })
+                : '-'}
+            </td>
+
+            <td className="text-center">
+              <a
+                className="action"
+                title="Open Slot"
+                heref="javascript:;"
+                onClick={() => {
+                  this.addSlot(item);
+                }}>
+                <i className="fa fa-plus"></i>
+              </a>
+            </td>
+
             {/* <td className="text-center">
               <a
                 className="action"
@@ -144,6 +197,53 @@ class Slots extends Component {
         this.setState({ success: '' });
         this.setState({ errors: err.errors });
       });
+  }
+
+  openSlot(e) {
+    e.preventDefault();
+
+    let options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.state.token}`
+      },
+      body: JSON.stringify({
+        slot: this.state.openSlotId,
+        date: format(this.state.openSlotDate, 'MM-dd-yyyy'),
+        seller: this.state.seller._id
+      })
+    };
+    fetch(process.env.REACT_APP_API_URI + 'slots/open-slots', options)
+      .then(response => {
+        if (!response.ok) {
+          return Promise.reject(response);
+        }
+        return response.json();
+      })
+      .catch(async response => {
+        const error = await response.json().then(text => text);
+        return Promise.reject(error);
+      })
+      .then(result => {
+        this.setState({ errors: [] });
+        this.setState({ success: result.success[0].message });
+        this.setState({ defaultSlots: result.data });
+        this.toggleOpenSlotModal();
+      })
+      .catch(err => {
+        this.setState({ success: '' });
+        this.setState({ errors: err.errors });
+        this.toggleOpenSlotModal();
+      });
+  }
+
+  toggleOpenSlotModal() {
+    const { openSlotModal } = this.state;
+    this.setState({
+      openSlotModal: !openSlotModal
+    });
   }
 
   render() {
@@ -222,6 +322,55 @@ class Slots extends Component {
                 </ModalFooter>
               </Form>
             </Modal>
+
+            <Modal
+              isOpen={this.state.openSlotModal}
+              toggle={this.toggleOpenSlotModal}>
+              <Form onSubmit={this.openSlot}>
+                <ModalHeader toggle={this.toggleOpenSlotModal}>
+                  Open a slot
+                </ModalHeader>
+                <ModalBody>
+                  <Row>
+                    <Col xs="3">
+                      <FormGroup>
+                        <Label>Slot time</Label>
+                        <Input
+                          type="text"
+                          readOnly
+                          value={this.state.openSlotTime}
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col xs="9">
+                      <FormGroup>
+                        <Label>Slot Date</Label>
+                        <br />
+                        <DatePicker
+                          className="form-control"
+                          selected={this.state.openSlotDate}
+                          minDate={addDays(new Date(), 0)}
+                          onChange={value => {
+                            this.setState({
+                              openSlotDate: value
+                            });
+                          }}
+                          dateFormat="M-d-Y"
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" type="submit">
+                    Save
+                  </Button>{' '}
+                  <Button color="secondary" onClick={this.toggleOpenSlotModal}>
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </Form>
+            </Modal>
           </Col>
         </Row>
         <Row>
@@ -231,7 +380,9 @@ class Slots extends Component {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Slot Time</th>
+                    <th>Default Slot Time</th>
+                    <th>Opened Slot Date</th>
+                    <th className="text-center">Open Date</th>
                     {/* <th className="text-center">Action</th> */}
                   </tr>
                 </thead>
