@@ -217,6 +217,62 @@
   },
   {
     "type": "post",
+    "url": "sellers/search",
+    "title": "Search Sellers",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>User's token.</p>"
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Content-Type",
+            "description": "<p>Content type as application/json.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>Mandatory search text.</p>"
+          }
+        ]
+      }
+    },
+    "group": "Sellers",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "data",
+            "description": "<p>list of sellers</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "controllers/sellers.js",
+    "groupTitle": "Sellers",
+    "name": "PostSellersSearch"
+  },
+  {
+    "type": "post",
     "url": "sellers/register",
     "title": "Register Seller",
     "parameter": {
