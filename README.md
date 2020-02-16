@@ -2,6 +2,12 @@
 
 An application solution for multitenant automobile service providers.
 
+## Software Dependencies
+
+- Node
+- MongoDB
+- Android SDK / XCode (optional: for running app on simulator)
+
 ## What is done
 
 - Auto format code using prettier
@@ -10,6 +16,7 @@ An application solution for multitenant automobile service providers.
 - Secure REST API with JWT authentication
 - Deployed documentation in GiHub pages
 - Deployed API on virtual private server
+- Deployed web app on firebase
 - Web : seller registration, login, add default slot times, open slot for a date
 - App : Signup, login, dashboard, seller list
 
@@ -45,6 +52,14 @@ An application solution for multitenant automobile service providers.
 
 https://anshad.github.io/auto-service/
 
+## REST API Endpoint
+
+http://51.161.8.184:3000/api/v1/
+
+## Web Portal
+
+https://assist-8346a.firebaseapp.com/#/login
+
 ## Re-publish API documentation
 
     git subtree push --prefix api/doc origin gh-pages
@@ -57,7 +72,6 @@ https://anshad.github.io/auto-service/
 | <img src="app/preview/login.png" alt="drawing" width="200"/>     |   <img src="app/preview/login-ios.png" alt="drawing" height="400"/>   |
 | <img src="app/preview/signup.png" alt="drawing" width="200"/>    |  <img src="app/preview/signup-ios.png" alt="drawing" height="400"/>   |
 | <img src="app/preview/dashboard.png" alt="drawing" width="200"/> | <img src="app/preview/dashboard-ios.png" alt="drawing" height="400"/> |
-
 
 ## Hack-fix for icon/build issues
 

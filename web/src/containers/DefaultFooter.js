@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 const propTypes = {
   children: PropTypes.node
-};
+}
 
-const defaultProps = {};
+const defaultProps = {}
 
 class DefaultFooter extends Component {
-  render() {
+  render () {
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
 
-    return <React.Fragment></React.Fragment>;
+    return <React.Fragment></React.Fragment>
   }
 }
 
-DefaultFooter.propTypes = propTypes;
-DefaultFooter.defaultProps = defaultProps;
+DefaultFooter.propTypes = propTypes
+DefaultFooter.defaultProps = defaultProps
 
-export default DefaultFooter;
+export default DefaultFooter

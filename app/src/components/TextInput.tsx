@@ -5,19 +5,6 @@ import { theme } from '../core/theme';
 
 type Props = React.ComponentProps<typeof Input> & { errorText?: string };
 
-const TextInput = ({ errorText, ...props }: Props) => (
-  <View style={styles.container}>
-    <Input
-      style={styles.input}
-      selectionColor={theme.colors.primary}
-      underlineColor="transparent"
-      mode="outlined"
-      {...props}
-    />
-    {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
-  </View>
-);
-
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -33,5 +20,18 @@ const styles = StyleSheet.create({
     paddingTop: 4
   }
 });
+
+const TextInput = ({ errorText, ...props }: Props) => (
+  <View style={styles.container}>
+    <Input
+      style={styles.input}
+      selectionColor={theme.colors.primary}
+      underlineColor="transparent"
+      mode="outlined"
+      {...props}
+    />
+    {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
+  </View>
+);
 
 export default memo(TextInput);

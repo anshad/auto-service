@@ -36,6 +36,7 @@ module.exports = () => {
     const hostname = server.get('hostname');
     const port = server.get('port');
     server.listen(port, () => {
+      // eslint-disable-next-line no-console
       console.log(`Express server listening on - http://${hostname}:${port}`);
     });
   };

@@ -1,5 +1,7 @@
 import React, { memo, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { API_URI } from 'react-native-dotenv';
+import { Snackbar } from 'react-native-paper';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -8,8 +10,6 @@ import TextInput from '../components/TextInput';
 import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { Navigation } from '../types';
-import { API_URI } from 'react-native-dotenv';
-import { Snackbar } from 'react-native-paper';
 import {
   emailValidator,
   passwordValidator,
@@ -38,7 +38,7 @@ const RegisterScreen = ({ navigation }: Props) => {
       return;
     }
 
-    let options = {
+    const options = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -51,7 +51,7 @@ const RegisterScreen = ({ navigation }: Props) => {
       })
     };
 
-    fetch(API_URI + 'auth/register', options)
+    fetch(`${API_URI}auth/register`, options)
       .then(res => {
         if (!res.ok) {
           return Promise.reject(res);
@@ -62,13 +62,30 @@ const RegisterScreen = ({ navigation }: Props) => {
         const error = await res.json().then(text => text);
         return Promise.reject(error);
       })
-      .then(async res => {
+      .then(() => {
         navigation.navigate('LoginScreen');
       })
       .catch(err => {
         setErrors(err.errors);
       });
   };
+
+  const styles = StyleSheet.create({
+    label: {
+      color: theme.colors.secondary
+    },
+    button: {
+      marginTop: 24
+    },
+    row: {
+      flexDirection: 'row',
+      marginTop: 4
+    },
+    link: {
+      fontWeight: 'bold',
+      color: theme.colors.primary
+    }
+  });
 
   return (
     <Background>
@@ -126,31 +143,15 @@ const RegisterScreen = ({ navigation }: Props) => {
           visible={errors.length > 0}
           onDismiss={() => {
             setErrors([]);
-          }}>
+          }}
+        >
           {errors[0].message ? errors[0].message : errors[0].msg}
         </Snackbar>
       ) : (
-        <Text></Text>
+        <Text />
       )}
     </Background>
   );
 };
-
-const styles = StyleSheet.create({
-  label: {
-    color: theme.colors.secondary
-  },
-  button: {
-    marginTop: 24
-  },
-  row: {
-    flexDirection: 'row',
-    marginTop: 4
-  },
-  link: {
-    fontWeight: 'bold',
-    color: theme.colors.primary
-  }
-});
 
 export default memo(RegisterScreen);

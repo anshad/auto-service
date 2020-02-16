@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { SectionGrid, FlatGrid } from 'react-native-super-grid';
-import {
-  Searchbar,
-  Avatar,
-  Button,
-  Card,
-  Title,
-  Paragraph
-} from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
+import { FlatGrid } from 'react-native-super-grid';
+import { Searchbar, Button, Card, Paragraph } from 'react-native-paper';
 import { API_URI } from 'react-native-dotenv';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import serviceImg from '../assets/service.png';
 import garageImg from '../assets/garage.jpg';
 
 export default class ServiceCentersScreen extends Component {
@@ -27,7 +19,6 @@ export default class ServiceCentersScreen extends Component {
   }
 
   updateSearch = search => {
-    console.log(search);
     this.setState({ search });
   };
 
@@ -35,7 +26,7 @@ export default class ServiceCentersScreen extends Component {
     AsyncStorage.getItem('token').then(token => {
       this.setState({ token });
 
-      let options = {
+      const options = {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -44,7 +35,7 @@ export default class ServiceCentersScreen extends Component {
         }
       };
 
-      fetch(API_URI + 'sellers', options)
+      fetch(`${API_URI}sellers`, options)
         .then(res => {
           if (!res.ok) {
             return Promise.reject(res);
@@ -64,10 +55,6 @@ export default class ServiceCentersScreen extends Component {
     });
   }
 
-  selectSeller(seller) {
-    console.log(seller);
-  }
-
   render() {
     return (
       <View style={this.styles.gridView}>
@@ -81,18 +68,24 @@ export default class ServiceCentersScreen extends Component {
           itemDimension={250}
           items={this.state.sellers}
           renderItem={({ item, index }) => (
-            <Card>
+            <Card key={index}>
               <Card.Title titleStyle={this.styles.itemName} title={item.name} />
               <Card.Cover source={garageImg} />
               <Card.Content>
                 <Paragraph>
-                  {item.building ? item.building + ', ' : ''}
-                  {item.street ? item.street + ', ' : ''}
-                  {item.city ? item.city + ', ' : ''}
-                  {item.province}, {item.country}
+                  {item.building ? `${item.building}, ` : ''}
+                  {item.street ? `${item.street}, ` : ''}
+                  {item.city ? `${item.city}, ` : ''}
+                  {item.province},{item.country}
                 </Paragraph>
-                <Paragraph>Email: {item.email}</Paragraph>
-                <Paragraph>Phone: {item.phonePrimary}</Paragraph>
+                <Paragraph>
+                  Email:
+                  {item.email}
+                </Paragraph>
+                <Paragraph>
+                  Phone:
+                  {item.phonePrimary}
+                </Paragraph>
                 <Paragraph>
                   Open Hours: {item.openingTime} - {item.closingTime}
                 </Paragraph>

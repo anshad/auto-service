@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
-import moment from 'moment';
 import {
   Col,
   Row,
@@ -60,7 +59,7 @@ class Slots extends Component {
 
   saveDefaultSlot(e) {
     e.preventDefault();
-    let options = {
+    const options = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -118,13 +117,13 @@ class Slots extends Component {
                         key={slotIndex}
                         className="custom-badge">
                         {openSlot.date}
-                        <a
-                          href="#"
+                        <Button
                           onClick={e => {
                             this.closeSlot(e, openSlot);
-                          }}>
+                          }}
+                          color="link">
                           <i className="fa fa-close left-margin"></i>
-                        </a>
+                        </Button>
                       </Badge>
                     );
                   })
@@ -132,15 +131,15 @@ class Slots extends Component {
             </td>
 
             <td className="text-center">
-              <a
+              <Button
+                color="link"
                 className="action"
                 title="Open Slot"
-                heref="javascript:;"
                 onClick={() => {
                   this.addSlot(item);
                 }}>
                 <i className="fa fa-plus"></i>
-              </a>
+              </Button>
             </td>
 
             {/* <td className="text-center">
@@ -162,7 +161,7 @@ class Slots extends Component {
   }
 
   componentDidMount() {
-    let options = {
+    const options = {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -202,7 +201,7 @@ class Slots extends Component {
   openSlot(e) {
     e.preventDefault();
 
-    let options = {
+    const options = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -255,7 +254,7 @@ class Slots extends Component {
             color="danger"
             key={i}
             toggle={() => {
-              let errors = [...this.state.errors];
+              const errors = [...this.state.errors];
               errors.splice(i, 1);
               this.setState({ errors });
             }}>
@@ -265,7 +264,7 @@ class Slots extends Component {
       }, this);
     }
 
-    let slots = this.renderSlotList();
+    const slots = this.renderSlotList();
 
     return (
       <div className="animated fadeIn">

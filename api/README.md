@@ -4,6 +4,8 @@ A REST API project for auto service web/mobile app.
 
 ## Run the API on local
 
+Change configurations on `.env` file. Then run the following:
+
     npm install
     npm run start
 

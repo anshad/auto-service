@@ -1,7 +1,7 @@
+const { validationResult } = require('express-validator');
 const slotModel = require('../models/slots');
 const openSlotModel = require('../models/openSlots');
 const sellerModel = require('../models/seller');
-const { validationResult } = require('express-validator');
 
 const addDefaultSlots = async (req, res) => {
   const errors = validationResult(req);
@@ -24,32 +24,30 @@ const addDefaultSlots = async (req, res) => {
   }
 
   try {
-    let seller = await sellerModel.findById(sellerId);
+    const seller = await sellerModel.findById(sellerId);
     if (seller) {
       slotModel
         .create({
           time,
           seller: sellerId
         })
-        .then(data => {
+        .then(() => {
           slotModel
             .find({ seller: sellerId })
             .populate('OpenSlots')
-            .then(slots => {
-              return res.status(200).json({
-                success: [
-                  {
-                    message: 'Default slot added successfully'
-                  }
-                ],
-                data: slots
-              });
-            })
-            .catch(err => {
+            .then((slots) => res.status(200).json({
+              success: [
+                {
+                  message: 'Default slot added successfully'
+                }
+              ],
+              data: slots
+            }))
+            .catch(() => {
               throw new Error();
             });
         })
-        .catch(error => {
+        .catch(() => {
           throw new Error();
         });
     } else {
@@ -113,44 +111,39 @@ const openSlot = async (req, res) => {
       date,
       slot
     })
-    .then(data => {
+    .then((data) => {
       slotModel
         .findById(slot)
-        .then(async slotData => {
+        .then(async (slotData) => {
           slotData.openSlots.push(data._id);
           await slotData.save();
 
           slotModel
             .find({ seller })
             .populate('openSlots')
-            .then(slotData => {
-              return res.status(200).json({
-                success: [
-                  {
-                    message: 'Slot opened successfully'
-                  }
-                ],
-                data: slotData
-              });
-            })
-            .catch(err => {
+            .then((slotsData) => res.status(200).json({
+              success: [
+                {
+                  message: 'Slot opened successfully'
+                }
+              ],
+              data: slotsData
+            }))
+            .catch(() => {
               throw new Error();
             });
         })
-        .catch(err => {
+        .catch(() => {
           throw new Error();
         });
     })
-    .catch(err => {
+    .catch(() => {
       throw new Error();
     });
 };
 
-const closeSlot = async (req, res) => {};
-
 module.exports = {
   addDefaultSlots,
   getDefaultSlots,
-  openSlot,
-  closeSlot
+  openSlot
 };

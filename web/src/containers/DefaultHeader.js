@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   UncontrolledDropdown,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
   Nav
-} from 'reactstrap';
-import PropTypes from 'prop-types';
+} from 'reactstrap'
+import PropTypes from 'prop-types'
 
-import { AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
-import logo from '../assets/img/logo.svg';
-import avatar from '../assets/img/user.png';
+import { AppNavbarBrand, AppSidebarToggler } from '@coreui/react'
+import logo from '../assets/img/logo.svg'
+import avatar from '../assets/img/user.png'
 
 const propTypes = {
   children: PropTypes.node
-};
+}
 
-const defaultProps = {};
+const defaultProps = {}
 
 class DefaultHeader extends Component {
-  render() {
+  render () {
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
 
@@ -49,13 +49,13 @@ class DefaultHeader extends Component {
           </UncontrolledDropdown>
         </Nav>
 
-        {/*<AppAsideToggler className="d-lg-none" mobile />*/}
+        {/* <AppAsideToggler className="d-lg-none" mobile /> */}
       </React.Fragment>
-    );
+    )
   }
 }
 
-DefaultHeader.propTypes = propTypes;
-DefaultHeader.defaultProps = defaultProps;
+DefaultHeader.propTypes = propTypes
+DefaultHeader.defaultProps = defaultProps
 
-export default DefaultHeader;
+export default DefaultHeader

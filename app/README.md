@@ -10,19 +10,27 @@ Install react native CLI,
 
 Install dependencies,
 
-    yarn
-
-or
-
     npm install
 
-Then run android or ios simulator on your machine and run,
+Run on android,
 
     npm run android
 
-or
+Run on ios,
 
     npm run ios
+
+Run unit tests
+
+    npm run test
+
+Check for lint issues,
+
+    npm run lint
+
+Start livereload build server,
+
+    npm run start
 
 ## Generate APK for release
 

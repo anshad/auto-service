@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Button,
   Card,
@@ -14,24 +14,24 @@ import {
   InputGroupText,
   Row,
   Alert
-} from 'reactstrap';
+} from 'reactstrap'
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       errors: [],
       success: '',
       email: '',
       password: ''
-    };
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    let options = {
+  handleSubmit (e) {
+    e.preventDefault()
+    const options = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -41,38 +41,38 @@ class Login extends Component {
         email: this.state.email,
         password: this.state.password
       })
-    };
+    }
     fetch(process.env.REACT_APP_API_URI + 'auth/login', options)
       .then(response => {
         if (!response.ok) {
-          return Promise.reject(response);
+          return Promise.reject(response)
         }
-        return response.json();
+        return response.json()
       })
       .catch(async response => {
-        const error = await response.json().then(text => text);
-        return Promise.reject(error);
+        const error = await response.json().then(text => text)
+        return Promise.reject(error)
       })
       .then(result => {
         if (result.data.seller) {
-          sessionStorage.setItem('token', result.data.token);
-          sessionStorage.setItem('seller', JSON.stringify(result.data.seller));
-          this.setState({ success: result.success[0].message });
-          this.props.history.push('/');
+          sessionStorage.setItem('token', result.data.token)
+          sessionStorage.setItem('seller', JSON.stringify(result.data.seller))
+          this.setState({ success: result.success[0].message })
+          this.props.history.push('/')
         } else {
           this.setState({
             errors: [{ message: "You don't have a seller account!" }]
-          });
+          })
         }
       })
       .catch(err => {
-        this.setState({ success: '' });
-        this.setState({ errors: err.errors });
-      });
+        this.setState({ success: '' })
+        this.setState({ errors: err.errors })
+      })
   }
 
-  render() {
-    let errors = '';
+  render () {
+    let errors = ''
     if (typeof this.state.errors !== 'undefined') {
       errors = this.state.errors.map((item, i) => {
         return (
@@ -80,14 +80,14 @@ class Login extends Component {
             color="danger"
             key={i}
             toggle={() => {
-              let errors = [...this.state.errors];
-              errors.splice(i, 1);
-              this.setState({ errors });
+              const errors = [...this.state.errors]
+              errors.splice(i, 1)
+              this.setState({ errors })
             }}>
             {item.msg ? item.msg : item.message}
           </Alert>
-        );
-      }, this);
+        )
+      }, this)
     }
 
     return (
@@ -125,7 +125,7 @@ class Login extends Component {
                           placeholder="Email"
                           value={this.state.email}
                           onChange={el => {
-                            this.setState({ email: el.currentTarget.value });
+                            this.setState({ email: el.currentTarget.value })
                           }}
                           autoComplete="email"
                         />
@@ -141,7 +141,7 @@ class Login extends Component {
                           required
                           value={this.state.password}
                           onChange={el => {
-                            this.setState({ password: el.currentTarget.value });
+                            this.setState({ password: el.currentTarget.value })
                           }}
                           placeholder="Password"
                           autoComplete="current-password"
@@ -192,8 +192,8 @@ class Login extends Component {
           </Row>
         </Container>
       </div>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login

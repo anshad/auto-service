@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { SectionGrid, FlatGrid } from 'react-native-super-grid';
-import { API_URI } from 'react-native-dotenv';
+import { View, StyleSheet } from 'react-native';
 
 export default class AppointmentsScreen extends Component {
   constructor(props) {
@@ -10,7 +8,7 @@ export default class AppointmentsScreen extends Component {
   }
 
   render() {
-    return <View style={this.styles.gridView}></View>;
+    return <View style={this.styles.gridView} />;
   }
 
   styles = StyleSheet.create({

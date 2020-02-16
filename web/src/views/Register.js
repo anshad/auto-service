@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Button,
   Card,
@@ -11,13 +11,13 @@ import {
   InputGroup,
   Row,
   Alert
-} from 'reactstrap';
+} from 'reactstrap'
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.options = ['India', 'Qatar', 'Kuwait'];
+    this.options = ['India', 'Qatar', 'Kuwait']
 
     this.state = {
       errors: [],
@@ -35,14 +35,14 @@ class Register extends Component {
       closingTime: '',
       password: '',
       confirmPassword: ''
-    };
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    let options = {
+  handleSubmit (event) {
+    event.preventDefault()
+    const options = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -63,29 +63,29 @@ class Register extends Component {
         password: this.state.password,
         confirmPassword: this.state.confirmPassword
       })
-    };
+    }
     fetch(process.env.REACT_APP_API_URI + 'sellers/register', options)
       .then(response => {
         if (!response.ok) {
-          return Promise.reject(response);
+          return Promise.reject(response)
         }
-        return response.json();
+        return response.json()
       })
       .catch(async response => {
-        const error = await response.json().then(text => text);
-        return Promise.reject(error);
+        const error = await response.json().then(text => text)
+        return Promise.reject(error)
       })
       .then(result => {
-        this.clearForm();
-        this.setState({ success: result.success[0].message });
+        this.clearForm()
+        this.setState({ success: result.success[0].message })
       })
       .catch(err => {
-        this.setState({ success: '' });
-        this.setState({ errors: err.errors });
-      });
+        this.setState({ success: '' })
+        this.setState({ errors: err.errors })
+      })
   }
 
-  clearForm() {
+  clearForm () {
     this.setState({
       country: '',
       name: '',
@@ -100,34 +100,34 @@ class Register extends Component {
       closingTime: '',
       password: '',
       confirmPassword: ''
-    });
+    })
   }
 
-  render() {
-    let countriesList =
+  render () {
+    const countriesList =
       this.options.length > 0 &&
       this.options.map((item, i) => {
         return (
           <option key={i} value={item}>
             {item}
           </option>
-        );
-      }, this);
+        )
+      }, this)
 
-    let errors = this.state.errors.map((item, i) => {
+    const errors = this.state.errors.map((item, i) => {
       return (
         <Alert
           color="danger"
           key={i}
           toggle={() => {
-            let errors = [...this.state.errors];
-            errors.splice(i, 1);
-            this.setState({ errors });
+            const errors = [...this.state.errors]
+            errors.splice(i, 1)
+            this.setState({ errors })
           }}>
           {item.msg ? item.msg : item.message}
         </Alert>
-      );
-    }, this);
+      )
+    }, this)
 
     return (
       <div className="app flex-row align-items-center page-container">
@@ -164,7 +164,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             name: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -179,7 +179,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             email: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -191,7 +191,7 @@ class Register extends Component {
                         autoComplete="new-password"
                         value={this.state.password}
                         onChange={el => {
-                          this.setState({ password: el.currentTarget.value });
+                          this.setState({ password: el.currentTarget.value })
                         }}
                       />
                     </InputGroup>
@@ -205,7 +205,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             confirmPassword: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -215,7 +215,7 @@ class Register extends Component {
                         required
                         value={this.state.country}
                         onChange={el => {
-                          this.setState({ country: el.currentTarget.value });
+                          this.setState({ country: el.currentTarget.value })
                         }}>
                         <option>Select country</option>
                         {countriesList}
@@ -228,7 +228,7 @@ class Register extends Component {
                         placeholder="State or province"
                         value={this.state.province}
                         onChange={el => {
-                          this.setState({ province: el.currentTarget.value });
+                          this.setState({ province: el.currentTarget.value })
                         }}
                       />
                     </InputGroup>
@@ -239,7 +239,7 @@ class Register extends Component {
                         placeholder="City"
                         value={this.state.city}
                         onChange={el => {
-                          this.setState({ city: el.currentTarget.value });
+                          this.setState({ city: el.currentTarget.value })
                         }}
                       />
                     </InputGroup>
@@ -250,7 +250,7 @@ class Register extends Component {
                         placeholder="Street"
                         value={this.state.street}
                         onChange={el => {
-                          this.setState({ street: el.currentTarget.value });
+                          this.setState({ street: el.currentTarget.value })
                         }}
                       />
                     </InputGroup>
@@ -262,7 +262,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             building: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -275,7 +275,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             phonePrimary: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -287,7 +287,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             phoneAlternate: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -301,7 +301,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             openingTime: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -315,7 +315,7 @@ class Register extends Component {
                         onChange={el => {
                           this.setState({
                             closingTime: el.currentTarget.value
-                          });
+                          })
                         }}
                       />
                     </InputGroup>
@@ -329,8 +329,8 @@ class Register extends Component {
           </Row>
         </Container>
       </div>
-    );
+    )
   }
 }
 
-export default Register;
+export default Register

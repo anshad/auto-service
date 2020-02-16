@@ -90,7 +90,7 @@ const login = async (req, res) => {
       expiresIn: 86400
     });
 
-    let result = {
+    const result = {
       success: [
         {
           message: 'Successfully logged-in'
@@ -110,7 +110,6 @@ const login = async (req, res) => {
     }
     return res.status(200).json(result);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       errors: [
         {

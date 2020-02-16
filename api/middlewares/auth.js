@@ -21,8 +21,6 @@ const validate = async (req, res, next) => {
 
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
-      console.log(err);
-      console.log(token);
       return res.status(401).json({
         errors: [
           {

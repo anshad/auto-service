@@ -1,20 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  Col,
-  Row,
-  Form,
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  FormGroup,
-  Label,
-  Input,
-  Alert,
-  Table
-} from 'reactstrap';
+import { Col, Row, Alert } from 'reactstrap';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -36,7 +22,7 @@ class Dashboard extends Component {
             color="danger"
             key={i}
             toggle={() => {
-              let errors = [...this.state.errors];
+              const errors = [...this.state.errors];
               errors.splice(i, 1);
               this.setState({ errors });
             }}>

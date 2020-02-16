@@ -1,19 +1,9 @@
 import React, { memo } from 'react';
-import {
-  ImageBackground,
-  StyleSheet,
-  KeyboardAvoidingView
-} from 'react-native';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 
 type Props = {
   children: React.ReactNode;
 };
-
-const Background = ({ children }: Props) => (
-  <KeyboardAvoidingView style={styles.container} behavior="padding">
-    {children}
-  </KeyboardAvoidingView>
-);
 
 const styles = StyleSheet.create({
   container: {
@@ -26,5 +16,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
+
+const Background = ({ children }: Props) => (
+  <KeyboardAvoidingView style={styles.container} behavior="padding">
+    {children}
+  </KeyboardAvoidingView>
+);
 
 export default memo(Background);

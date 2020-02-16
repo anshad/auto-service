@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { Text } from 'react-native';
 
 export default class ServiceHistoryScreen extends Component {
   constructor(props) {

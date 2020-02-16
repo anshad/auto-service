@@ -116,8 +116,6 @@ const getSellers = async (req, res) => {
     });
   }
 
-  console.log(sellers);
-
   return res.status(200).json({
     data: sellers
   });

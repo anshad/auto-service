@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { API_URI } from 'react-native-dotenv';
+import { Snackbar } from 'react-native-paper';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
@@ -9,8 +11,6 @@ import TextInput from '../components/TextInput';
 import BackButton from '../components/BackButton';
 import { theme } from '../core/theme';
 import { emailValidator, passwordValidator } from '../core/utils';
-import { API_URI } from 'react-native-dotenv';
-import { Snackbar } from 'react-native-paper';
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ export default class LoginScreen extends Component {
       return;
     }
 
-    let options = {
+    const options = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -58,7 +58,7 @@ export default class LoginScreen extends Component {
       })
     };
 
-    fetch(API_URI + 'auth/login', options)
+    fetch(`${API_URI}auth/login`, options)
       .then(res => {
         if (!res.ok) {
           return Promise.reject(res);
@@ -130,7 +130,8 @@ export default class LoginScreen extends Component {
         <View style={this.styles.row}>
           <Text style={this.styles.label}>Don’t have an account? </Text>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('RegisterScreen')}>
+            onPress={() => this.props.navigation.navigate('RegisterScreen')}
+          >
             <Text style={this.styles.link}>Sign up</Text>
           </TouchableOpacity>
         </View>
@@ -146,7 +147,8 @@ export default class LoginScreen extends Component {
           visible={this.state.errors.length > 0}
           onDismiss={() => {
             this.setState({ errors: [] });
-          }}>
+          }}
+        >
           {this.state.errors[0].message
             ? this.state.errors[0].message
             : this.state.errors[0].msg}

@@ -3,12 +3,8 @@ import { StyleSheet, Text } from 'react-native';
 import { theme } from '../core/theme';
 
 type Props = {
-  children: React.ReactNode
+  children: React.ReactNode;
 };
-
-const Header = ({ children }: Props) => (
-  <Text style={styles.header}>{children}</Text>
-);
 
 const styles = StyleSheet.create({
   header: {
@@ -18,5 +14,9 @@ const styles = StyleSheet.create({
     paddingVertical: 14
   }
 });
+
+const Header = ({ children }: Props) => (
+  <Text style={styles.header}>{children}</Text>
+);
 
 export default memo(Header);
