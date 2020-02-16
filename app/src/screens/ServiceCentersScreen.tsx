@@ -16,10 +16,40 @@ export default class ServiceCentersScreen extends Component {
       errors: [],
       token: ''
     };
+
+    this.updateSearch = this.updateSearch.bind(this);
   }
 
   updateSearch = search => {
     this.setState({ search });
+
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.state.token}`
+      },
+      body: JSON.stringify({ text: search })
+    };
+
+    fetch(`${API_URI}sellers/search`, options)
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject(res);
+        }
+        return res.json();
+      })
+      .catch(async res => {
+        const error = await res.json().then(text => text);
+        return Promise.reject(error);
+      })
+      .then(res => {
+        this.setState({ sellers: res.data });
+      })
+      .catch(err => {
+        this.setState({ errors: err.errors });
+      });
   };
 
   componentDidMount() {

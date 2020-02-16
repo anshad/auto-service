@@ -121,7 +121,40 @@ const getSellers = async (req, res) => {
   });
 };
 
+const searchSellers = async (req, res) => {
+  const { text } = req.body;
+
+  let query = {};
+  if (text) {
+    query = {
+      $or: [
+        { name: { $regex: text, $options: 'i' } },
+        { city: { $regex: text, $options: 'i' } },
+        { street: { $regex: text, $options: 'i' } }
+      ]
+    };
+  }
+
+  const sellers = await sellerModel.find(query);
+
+  if (!sellers) {
+    return res.status(404).json({
+      success: false,
+      errors: [
+        {
+          message: 'No sellers found'
+        }
+      ]
+    });
+  }
+
+  return res.status(200).json({
+    data: sellers
+  });
+};
+
 module.exports = {
   registerSeller,
-  getSellers
+  getSellers,
+  searchSellers
 };

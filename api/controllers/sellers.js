@@ -101,4 +101,17 @@ router.post(
  */
 router.get('/', [auth.validate], sellerService.getSellers);
 
+/**
+ * @api {post} sellers/search Search Sellers
+ * @apiHeader {String} Authorization User's token.
+ * @apiHeader {String} Content-Type Content type as application/json.
+ * @apiParam {String} text Mandatory search text.
+ * @apiGroup Sellers
+ *
+ * @apiSuccess {Array} data list of sellers
+ *
+ *
+ */
+router.post('/search', [auth.validate], sellerService.searchSellers);
+
 module.exports = router;
