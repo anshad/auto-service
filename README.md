@@ -51,12 +51,32 @@ https://anshad.github.io/auto-service/
 
 ## App - screens
 
-| Android                                                          |                       ios (need to update)                       |
-| ---------------------------------------------------------------- | :--------------------------------------------------------------: |
-| <img src="app/preview/home.png" alt="drawing" width="200"/>      |   <img src="app/preview/home.png" alt="drawing" width="200"/>    |
-| <img src="app/preview/login.png" alt="drawing" width="200"/>     |   <img src="app/preview/login.png" alt="drawing" width="200"/>   |
-| <img src="app/preview/signup.png" alt="drawing" width="200"/>    |  <img src="app/preview/signup.png" alt="drawing" width="200"/>   |
-| <img src="app/preview/dashboard.png" alt="drawing" width="200"/> | <img src="app/preview/dashboard.png" alt="drawing" width="200"/> |
+| Android                                                          |                                  ios                                  |
+| ---------------------------------------------------------------- | :-------------------------------------------------------------------: |
+| <img src="app/preview/home.png" alt="drawing" width="200"/>      |   <img src="app/preview/home-ios.png" alt="drawing" height="400"/>    |
+| <img src="app/preview/login.png" alt="drawing" width="200"/>     |   <img src="app/preview/login-ios.png" alt="drawing" height="400"/>   |
+| <img src="app/preview/signup.png" alt="drawing" width="200"/>    |  <img src="app/preview/signup-ios.png" alt="drawing" height="400"/>   |
+| <img src="app/preview/dashboard.png" alt="drawing" width="200"/> | <img src="app/preview/dashboard-ios.png" alt="drawing" height="400"/> |
+
+
+## Hack-fix for icon/build issues
+
+The latest version of react native will take care of auto linking dependencies. But we need some hack-fix for icon issues.
+
+To have icons on android, run `react-native link react-native-vector-icons` (need to unlink for running or building ios)
+
+To fix ios build error, run `react-native unlink react-native-vector-icons` then to fix icon issues add the following in `ios/autoService/Info.plist` after `<key>UIAppFonts</key>`.
+
+    <array>
+        <string>FontAwesome.ttf</string>
+        <string>FontAwesome5_Brands.ttf</string>
+        <string>FontAwesome5_Regular.ttf</string>
+        <string>FontAwesome5_Solid.ttf</string>
+        <string>Foundation.ttf</string>
+        <string>Ionicons.ttf</string>
+        <string>MaterialIcons.ttf</string>
+        <string>MaterialCommunityIcons.ttf</string>
+    </array>
 
 ## References
 

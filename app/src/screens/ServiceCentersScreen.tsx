@@ -27,6 +27,7 @@ export default class ServiceCentersScreen extends Component {
   }
 
   updateSearch = search => {
+    console.log(search);
     this.setState({ search });
   };
 
@@ -101,55 +102,6 @@ export default class ServiceCentersScreen extends Component {
                 <Button>Book Appointment</Button>
               </Card.Actions>
             </Card>
-            // <TouchableOpacity
-            //   style={this.styles.itemContainer}
-            //   onPress={() => {
-            //     this.selectSeller(item);
-            //   }}>
-            //   <View
-            //     style={{
-            //       flex: 1,
-            //       flexDirection: 'row',
-            //       alignItems: 'stretch'
-            //     }}>
-            //     <Image
-            //       source={serviceImg}
-            //       style={this.styles.image}
-            //       resizeMode="contain"
-            //     />
-            //     <View style={this.styles.itemDetails}>
-            //       <Text style={this.styles.itemName}>{item.name}</Text>
-            //       {item.building ? (
-            //         <Text style={this.styles.itemCode}>{item.building}</Text>
-            //       ) : (
-            //         <Text style={this.styles.hidden}></Text>
-            //       )}
-            //       {item.street ? (
-            //         <Text style={this.styles.itemCode}>{item.street}</Text>
-            //       ) : (
-            //         <Text style={this.styles.hidden}></Text>
-            //       )}
-            //       {item.city ? (
-            //         <Text style={this.styles.itemCode}>{item.city}</Text>
-            //       ) : (
-            //         <Text style={this.styles.hidden}></Text>
-            //       )}
-            //       <Text style={this.styles.itemCode}>{item.province}</Text>
-            //       <Text style={this.styles.itemCode}>{item.country}</Text>
-            //       <Text style={this.styles.itemCode}>Email: {item.email}</Text>
-            //       {item.phonePrimary ? (
-            //         <Text style={this.styles.itemCode}>
-            //           Phone: {item.phonePrimary}
-            //         </Text>
-            //       ) : (
-            //         <Text style={this.styles.hidden}></Text>
-            //       )}
-            //       <Text style={this.styles.itemCode}>
-            //         Open Hours: {item.openingTime} - {item.closingTime}
-            //       </Text>
-            //     </View>
-            //   </View>
-            // </TouchableOpacity>
           )}
         />
       </View>
