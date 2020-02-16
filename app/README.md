@@ -18,11 +18,11 @@ or
 
 Then run android or ios simulator on your machine and run,
 
-    react-native run-android
+    npm run android
 
 or
 
-    react-native run-ios
+    npm run ios
 
 ## Generate APK for release
 

@@ -35,6 +35,9 @@ An application solution for multitenant automobile service providers.
 - Progress spinner - Web, App
 - Close an opened slot date - Web
 - Close expired slot date - Web
+- Avoid callback hells - API
+- Move re-usable code to utils
+- MongoDB Security
 
 ## REST API documentation
 

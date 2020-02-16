@@ -71,11 +71,10 @@ const login = async (req, res) => {
 
   try {
     const isUserExists = await userModel.findOne({ email });
-
-    const isPasswordValid = await bcrypt.compare(
-      password,
-      isUserExists.password
-    );
+    let isPasswordValid;
+    if (isUserExists) {
+      isPasswordValid = await bcrypt.compare(password, isUserExists.password);
+    }
 
     if (!isUserExists || !isPasswordValid) {
       return res.status(401).json({
@@ -111,6 +110,7 @@ const login = async (req, res) => {
     }
     return res.status(200).json(result);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       errors: [
         {
