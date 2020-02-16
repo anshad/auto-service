@@ -10,8 +10,10 @@
 }
 .custom-badge {
   margin-right: 5px;
-  height: 20px;
-  line-height: 15px;
+  margin-bottom: 2px;
+  display: inline-block;
+  // height: 20px;
+  // line-height: 15px;
   a {
     i {
       color: orangered;

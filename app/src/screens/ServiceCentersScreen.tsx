@@ -18,6 +18,7 @@ export default class ServiceCentersScreen extends Component {
     };
 
     this.updateSearch = this.updateSearch.bind(this);
+    this.findSlots = this.findSlots.bind(this);
   }
 
   updateSearch = search => {
@@ -85,6 +86,13 @@ export default class ServiceCentersScreen extends Component {
     });
   }
 
+  findSlots(seller) {
+    this.props.navigation.navigate('SlotScreen', {
+      id: seller._id,
+      name: seller.name
+    });
+  }
+
   render() {
     return (
       <View style={this.styles.gridView}>
@@ -122,7 +130,13 @@ export default class ServiceCentersScreen extends Component {
               </Card.Content>
 
               <Card.Actions>
-                <Button>Book Appointment</Button>
+                <Button
+                  onPress={() => {
+                    this.findSlots(item);
+                  }}
+                >
+                  Check Available Slots
+                </Button>
               </Card.Actions>
             </Card>
           )}

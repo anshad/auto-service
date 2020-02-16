@@ -9,7 +9,8 @@ const OpenSlots = new Schema(
       required: [true, 'slot date is required']
     },
     slot: { type: Schema.Types.ObjectId, ref: 'DefaultSlots' },
-    active: { type: Boolean, default: true }
+    active: { type: Boolean, default: true },
+    appointments: [{ type: Schema.Types.ObjectId, ref: 'Appointment' }]
   },
   {
     timestamps: true

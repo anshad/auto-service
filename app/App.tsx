@@ -26,13 +26,16 @@ function App() {
         />
         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen
-          name="BookAppointments"
+          name="BookAppointmentScreen"
           component={RegisterAppointmentScreen}
         />
         <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-        <Stack.Screen name="ServiceCenters" component={ServiceCentersScreen} />
+        <Stack.Screen
+          name="ServiceCenterScreen"
+          component={ServiceCentersScreen}
+        />
         <Stack.Screen name="ServiceHistory" component={ServiceHistoryScreen} />
-        <Stack.Screen name="Slots" component={SlotScreen} />
+        <Stack.Screen name="SlotScreen" component={SlotScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -35,14 +35,16 @@ const addDefaultSlots = async (req, res) => {
           slotModel
             .find({ seller: sellerId })
             .populate('OpenSlots')
-            .then((slots) => res.status(200).json({
-              success: [
-                {
-                  message: 'Default slot added successfully'
-                }
-              ],
-              data: slots
-            }))
+            .then(slots =>
+              res.status(200).json({
+                success: [
+                  {
+                    message: 'Default slot added successfully'
+                  }
+                ],
+                data: slots
+              })
+            )
             .catch(() => {
               throw new Error();
             });
@@ -75,6 +77,8 @@ const getDefaultSlots = async (req, res) => {
   const slots = await slotModel
     .find({ seller: req.params.sellerId })
     .populate('openSlots');
+
+  console.log(slots);
 
   if (!slots) {
     return res.status(404).json({
@@ -111,24 +115,26 @@ const openSlot = async (req, res) => {
       date,
       slot
     })
-    .then((data) => {
+    .then(data => {
       slotModel
         .findById(slot)
-        .then(async (slotData) => {
+        .then(async slotData => {
           slotData.openSlots.push(data._id);
           await slotData.save();
 
           slotModel
             .find({ seller })
             .populate('openSlots')
-            .then((slotsData) => res.status(200).json({
-              success: [
-                {
-                  message: 'Slot opened successfully'
-                }
-              ],
-              data: slotsData
-            }))
+            .then(slotsData =>
+              res.status(200).json({
+                success: [
+                  {
+                    message: 'Slot opened successfully'
+                  }
+                ],
+                data: slotsData
+              })
+            )
             .catch(() => {
               throw new Error();
             });

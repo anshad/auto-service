@@ -27,7 +27,7 @@ export default class LoginScreen extends Component {
   componentDidMount() {
     AsyncStorage.getItem('token').then(token => {
       if (token !== null) {
-        this.props.navigation.navigate('DashboardScreen');
+        this.props.navigation.navigate('ServiceCenterScreen');
       }
     });
   }
@@ -71,7 +71,7 @@ export default class LoginScreen extends Component {
       })
       .then(async res => {
         await AsyncStorage.setItem('token', res.data.token);
-        this.props.navigation.navigate('DashboardScreen');
+        this.props.navigation.navigate('ServiceCenterScreen');
       })
       .catch(err => {
         if (typeof err.errors !== 'undefined') {

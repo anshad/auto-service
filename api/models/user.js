@@ -25,10 +25,4 @@ const User = new Schema(
   }
 );
 
-// User.set('toJSON', {
-//   transform: function(doc, ret, opt) {
-//     delete ret['password'];
-//     return ret;
-//   }
-// });
 module.exports = mongoose.model('User', User);

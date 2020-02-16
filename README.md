@@ -47,6 +47,8 @@ An application solution for multitenant automobile service providers.
 - Avoid callback hells - API
 - Move re-usable code to utils
 - MongoDB Security
+- Consistent form controls - App
+- Improve database schema and mapping - API
 
 ## REST API documentation
 
@@ -66,12 +68,25 @@ https://assist-8346a.firebaseapp.com/#/login
 
 ## App - screens
 
-| Android                                                          |                                  ios                                  |
-| ---------------------------------------------------------------- | :-------------------------------------------------------------------: |
-| <img src="app/preview/home.png" alt="drawing" width="200"/>      |   <img src="app/preview/home-ios.png" alt="drawing" height="400"/>    |
-| <img src="app/preview/login.png" alt="drawing" width="200"/>     |   <img src="app/preview/login-ios.png" alt="drawing" height="400"/>   |
-| <img src="app/preview/signup.png" alt="drawing" width="200"/>    |  <img src="app/preview/signup-ios.png" alt="drawing" height="400"/>   |
-| <img src="app/preview/dashboard.png" alt="drawing" width="200"/> | <img src="app/preview/dashboard-ios.png" alt="drawing" height="400"/> |
+| Android                                                                |                                   ios                                   |
+| ---------------------------------------------------------------------- | :---------------------------------------------------------------------: |
+| <img src="preview/android/home.png" alt="home" width="200"/>           |      <img src="preview/ios/home-ios.png" alt="home" height="400"/>      |
+| <img src="preview/android/login.png" alt="login" width="200"/>         |     <img src="preview/ios/login-ios.png" alt="login" height="400"/>     |
+| <img src="preview/android/signup.png" alt="signup" width="200"/>       |    <img src="preview/ios/signup-ios.png" alt="signup" height="400"/>    |
+| <img src="preview/android/dashboard.png" alt="dashboard" width="200"/> | <img src="preview/ios/dashboard-ios.png" alt="dashboard" height="400"/> |
+| <img src="preview/android/search.png" alt="search" width="200"/>       |    <img src="preview/ios/search-ios.png" alt="search" height="400"/>    |
+| <img src="preview/android/slot.png" alt="slot" width="200"/>           |      <img src="preview/ios/slot-ios.png" alt="slot" height="400"/>      |
+| <img src="preview/android/request.png" alt="request" width="200"/>     |   <img src="preview/ios/request-ios.png" alt="request" height="400"/>   |
+
+## Web - screens
+
+|                                                                       |
+| --------------------------------------------------------------------- |
+| <img src="preview/web/login.png" alt="login" width="400"/>            |
+| <img src="preview/web/register.png" alt="register" width="400"/>      |
+| <img src="preview/web/slots.png" alt="slots" width="400"/>            |
+| <img src="preview/web/add-default-slot.png" alt="slots" width="400"/> |
+| <img src="preview/web/open-slot.png" alt="slots" width="400"/>        |
 
 ## Hack-fix for icon/build issues
 
