@@ -66,7 +66,11 @@ const RegisterScreen = ({ navigation }: Props) => {
         navigation.navigate('LoginScreen');
       })
       .catch(err => {
-        setErrors(err.errors);
+        if (typeof err.errors !== 'undefined') {
+          setErrors(err.errors);
+        } else {
+          setErrors([{ message: 'API server not accessible' }]);
+        }
       });
   };
 

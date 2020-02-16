@@ -74,7 +74,11 @@ export default class LoginScreen extends Component {
         this.props.navigation.navigate('DashboardScreen');
       })
       .catch(err => {
-        this.setState({ errors: err.errors });
+        if (typeof err.errors !== 'undefined') {
+          this.setState({ errors: err.errors });
+        } else {
+          this.setState({ errors: [{ message: 'API server not accessible' }] });
+        }
       });
   }
 
