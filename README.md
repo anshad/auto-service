@@ -10,6 +10,8 @@ An application solution for multitenant automobile service providers.
 - Secure REST API with JWT authentication
 - Deployed documentation in GiHub pages
 - Deployed API on virtual private server
+- Web : seller registration, login, add default slot times, open slot for a date
+- App : Signup, login, dashboard, seller list
 
 ## What can be improved or added
 
@@ -46,6 +48,15 @@ https://anshad.github.io/auto-service/
 ## Re-publish API documentation
 
     git subtree push --prefix api/doc origin gh-pages
+
+## App - screens
+
+| Android                                                          |                       ios (need to update)                       |
+| ---------------------------------------------------------------- | :--------------------------------------------------------------: |
+| <img src="app/preview/home.png" alt="drawing" width="200"/>      |   <img src="app/preview/home.png" alt="drawing" width="200"/>    |
+| <img src="app/preview/login.png" alt="drawing" width="200"/>     |   <img src="app/preview/login.png" alt="drawing" width="200"/>   |
+| <img src="app/preview/signup.png" alt="drawing" width="200"/>    |  <img src="app/preview/signup.png" alt="drawing" width="200"/>   |
+| <img src="app/preview/dashboard.png" alt="drawing" width="200"/> | <img src="app/preview/dashboard.png" alt="drawing" width="200"/> |
 
 ## References
 
