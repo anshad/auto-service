@@ -1,4 +1,4 @@
-package com.autoservice;
+package com.anshadautoservice;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

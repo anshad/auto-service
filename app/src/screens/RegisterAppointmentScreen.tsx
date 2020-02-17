@@ -22,7 +22,7 @@ export default class RegisterAppointmentScreen extends Component {
   bookAppointment() {}
 
   render() {
-    let data = [
+    const data = [
       {
         value: 'Two Wheeler'
       },
