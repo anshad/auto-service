@@ -56,7 +56,7 @@ https://anshad.github.io/auto-service/
 
 ## REST API Endpoint
 
-http://51.161.8.184:3000/api/v1/
+http://51.161.33.216:3000/api/v1/
 
 ## Web Portal
 
