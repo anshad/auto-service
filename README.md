@@ -16,7 +16,7 @@ An application solution for multitenant automobile service providers.
 - Secure REST API with JWT authentication
 - Deployed documentation in GiHub pages
 - Deployed API on virtual private server
-- Deployed web app on firebase
+- Deployed web app on virtual private server
 - Web : seller registration, login, add default slot times, open slot for a date
 - App : Signup, login, dashboard, seller list
 
@@ -60,7 +60,7 @@ http://51.161.33.216:3000/api/v1/
 
 ## Web Portal
 
-https://assist-8346a.firebaseapp.com/#/login
+http://51.161.33.216/#/
 
 ## Re-publish API documentation
 
