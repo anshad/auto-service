@@ -18,24 +18,51 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{ title: 'Login' }}
+        />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{ title: 'Home' }}
+        />
         <Stack.Screen
           name="AppointmentsScreen"
           component={AppointmentsScreen}
+          options={{ title: 'Appointments' }}
         />
-        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen
+          name="DashboardScreen"
+          component={DashboardScreen}
+          options={{ title: 'Dashboard' }}
+        />
         <Stack.Screen
           name="BookAppointmentScreen"
           component={RegisterAppointmentScreen}
+          options={{ title: 'Book Appointment' }}
         />
-        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{ title: 'Sign Up' }}
+        />
         <Stack.Screen
           name="ServiceCenterScreen"
           component={ServiceCentersScreen}
+          options={{ title: 'Service Centers' }}
         />
-        <Stack.Screen name="ServiceHistory" component={ServiceHistoryScreen} />
-        <Stack.Screen name="SlotScreen" component={SlotScreen} />
+        <Stack.Screen
+          name="ServiceHistory"
+          component={ServiceHistoryScreen}
+          options={{ title: 'Service History' }}
+        />
+        <Stack.Screen
+          name="SlotScreen"
+          component={SlotScreen}
+          options={{ title: 'Appointment Slots' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
