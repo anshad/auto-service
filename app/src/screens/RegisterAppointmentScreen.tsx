@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
-import Background from '../components/Background';
 import { StyleSheet } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
+
+import Background from '../components/Background';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
 
 export default class RegisterAppointmentScreen extends Component {
   constructor(props) {
@@ -19,7 +20,9 @@ export default class RegisterAppointmentScreen extends Component {
     this.bookAppointment = this.bookAppointment.bind(this);
   }
 
-  bookAppointment() {}
+  bookAppointment() {
+    //
+  }
 
   render() {
     const data = [

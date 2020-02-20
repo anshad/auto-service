@@ -1,20 +1,21 @@
 import React, { memo, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { API_URI } from 'react-native-dotenv';
 import { Snackbar } from 'react-native-paper';
-import Background from '../components/Background';
-import Logo from '../components/Logo';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
+
 import BackButton from '../components/BackButton';
+import Background from '../components/Background';
+import Button from '../components/Button';
+import Header from '../components/Header';
+import Logo from '../components/Logo';
+import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
-import { Navigation } from '../types';
 import {
   emailValidator,
-  passwordValidator,
-  nameValidator
+  nameValidator,
+  passwordValidator
 } from '../core/utils';
+import { Navigation } from '../types';
 
 type Props = {
   navigation: Navigation;
@@ -93,8 +94,6 @@ const RegisterScreen = ({ navigation }: Props) => {
 
   return (
     <Background>
-      <BackButton goBack={() => navigation.navigate('HomeScreen')} />
-
       <Logo />
 
       <Header>Create Account</Header>

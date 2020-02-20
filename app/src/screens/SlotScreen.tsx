@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { API_URI } from 'react-native-dotenv';
 import AsyncStorage from '@react-native-community/async-storage';
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { API_URI } from 'react-native-dotenv';
+import { Card, Chip, Paragraph } from 'react-native-paper';
 import { FlatGrid } from 'react-native-super-grid';
-import { Button, Card, Paragraph, Chip } from 'react-native-paper';
 
 export default class SlotScreen extends Component {
   constructor(props) {

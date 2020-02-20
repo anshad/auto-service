@@ -9,7 +9,7 @@ module.exports = {
   // ],
   extends: ['plugin:@typescript-eslint/recommended', '@react-native-community'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier', 'simple-import-sort'],
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx']
@@ -20,6 +20,9 @@ module.exports = {
   },
   rules: {
     'comma-dangle': ['error', 'never'],
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'simple-import-sort/sort': 'error',
+    'sort-imports': 'off',
+    'prettier/prettier': 'error'
   }
 };

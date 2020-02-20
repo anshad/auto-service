@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BottomNavigation } from 'react-native-paper';
+
+import AppointmentsScreen from './AppointmentsScreen';
 import ServiceCentersScreen from './ServiceCentersScreen';
 import ServiceHistoryScreen from './ServiceHistoryScreen';
-import AppointmentsScreen from './AppointmentsScreen';
 
 export default class DashboardScreen extends Component {
   state = {

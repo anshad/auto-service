@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { FlatGrid } from 'react-native-super-grid';
-import { Searchbar, Button, Card, Paragraph } from 'react-native-paper';
-import { API_URI } from 'react-native-dotenv';
 import AsyncStorage from '@react-native-community/async-storage';
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { API_URI } from 'react-native-dotenv';
+import { Button, Card, Paragraph, Searchbar } from 'react-native-paper';
+import { FlatGrid } from 'react-native-super-grid';
 
 import garageImg from '../assets/garage.jpg';
 

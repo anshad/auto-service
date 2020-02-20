@@ -1,11 +1,11 @@
-import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import * as React from 'react';
 
-import HomeScreen from './src/screens/HomeScreen';
 import AppointmentsScreen from './src/screens/AppointmentsScreen';
-import LoginScreen from './src/screens/LoginScreen';
 import DashboardScreen from './src/screens/DashboardScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import LoginScreen from './src/screens/LoginScreen';
 import RegisterAppointmentScreen from './src/screens/RegisterAppointmentScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import ServiceCentersScreen from './src/screens/ServiceCentersScreen';

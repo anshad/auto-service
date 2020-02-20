@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import React, { Component } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { API_URI } from 'react-native-dotenv';
 import { Snackbar } from 'react-native-paper';
-import Background from '../components/Background';
-import Logo from '../components/Logo';
-import Header from '../components/Header';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
+
 import BackButton from '../components/BackButton';
+import Background from '../components/Background';
+import Button from '../components/Button';
+import Header from '../components/Header';
+import Logo from '../components/Logo';
+import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
 import { emailValidator, passwordValidator } from '../core/utils';
 
@@ -85,10 +86,6 @@ export default class LoginScreen extends Component {
   render() {
     return (
       <Background>
-        <BackButton
-          goBack={() => this.props.navigation.navigate('HomeScreen')}
-        />
-
         <Logo />
 
         <Header>Auto Service</Header>
